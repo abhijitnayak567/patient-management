@@ -1,0 +1,44 @@
+### Upadate a Patient details
+PUT http://localhost:4000/patients/16
+Content-Type: application/json
+
+{
+  "name": "Monkey D Luffy",
+  "email": "monkeyluffy@example.com",
+  "address": "123 One Pice",
+  "dateOfBirth": "1994-11-09"
+}
+
+### Upadate a Patient details - Bad Request
+PUT http://localhost:4000/patients/1166
+Content-Type: application/json
+
+{
+  "name": "Monkey D Luffy",
+  "email": "monkeyluffy@example.com",
+  "address": "123 One Pice",
+  "dateOfBirth": "1994-11-09"
+}
+
+### Upadate a Patient details - Bad Request
+PUT http://localhost:4000/patients/16
+Content-Type: application/json
+
+{
+  "name": "Monkey D Luffy",
+  "email": "isabella.walker@example.com",
+  "address": "123 One Pice",
+  "dateOfBirth": "1994-11-09"
+}
+
+### Upadate a Patient details - Bad Request
+PUT http://localhost:4000/patients/16
+Content-Type: application/json
+
+{
+  "name": "Monkey D Luffy",
+  "email": "",
+  "address": "123 One Pice"
+}
+
+###

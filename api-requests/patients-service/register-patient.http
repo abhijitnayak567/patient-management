@@ -1,0 +1,22 @@
+### Regiser a new Patient
+POST http://localhost:4000/patients
+Content-Type: application/json
+
+{
+  "name": "Monkey D Luffy",
+  "email": "luffy@example.com",
+  "address": "123 One Pice",
+  "dateOfBirth": "1994-12-09"
+}
+
+### Regiser a new Patient - Bad Request
+POST http://localhost:4000/patients
+Content-Type: application/json
+
+{
+  "name": "Monkey D Luffy",
+  "email": "",
+  "address": "123 One Pice"
+}
+
+###

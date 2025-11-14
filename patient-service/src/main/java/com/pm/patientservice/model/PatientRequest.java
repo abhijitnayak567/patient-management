@@ -1,29 +1,32 @@
 package com.pm.patientservice.model;
 
-public class PatientResponse {
-    private long id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+public class PatientRequest {
+    @NotBlank(message = "Name is required")
+    @Size(max = 100, message = "Name cannot exceed 100 characters")
     private String name;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email should be valid")
     private String email;
+
+    @NotBlank(message = "Address is required")
     private String address;
+
+    @NotBlank(message = "Date of birth is required")
     private String dateOfBirth;
 
-    public PatientResponse() {
+    public PatientRequest() {
     }
 
-    public PatientResponse(long id, String name, String email, String address, String dateOfBirth) {
-        this.id = id;
+    public PatientRequest(String name, String email, String address, String dateOfBirth) {
         this.name = name;
         this.email = email;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {

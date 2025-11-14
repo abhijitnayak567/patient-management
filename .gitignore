@@ -32,3 +32,4 @@ replay_pid*
 */.gitattributes
 */HELP.md
 */README.md
+*/target/
