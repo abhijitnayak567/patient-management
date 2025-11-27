@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/patients")
@@ -54,6 +53,7 @@ public class PatientController {
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a patient")
     public ResponseEntity<Void> deletePatient(@PathVariable long id) {
+        patientService.deletePatient(id);
         return ResponseEntity.noContent().build();
     }
 }
