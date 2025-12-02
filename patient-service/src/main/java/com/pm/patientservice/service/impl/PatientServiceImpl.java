@@ -3,6 +3,7 @@ package com.pm.patientservice.service.impl;
 import com.pm.patientservice.entity.Patient;
 import com.pm.patientservice.exception.EmailAlreadyExistsException;
 import com.pm.patientservice.exception.PatientNotFoundException;
+import com.pm.patientservice.grpc.BillingServiceGrpcClient;
 import com.pm.patientservice.mapper.PatientMapper;
 import com.pm.patientservice.model.PatientRequest;
 import com.pm.patientservice.model.PatientResponse;
@@ -17,9 +18,11 @@ import java.util.stream.Collectors;
 @Service
 public class PatientServiceImpl implements PatientService {
     private final PatientRepository patientRepository;
+    private final BillingServiceGrpcClient billingServiceClient;
 
-    public PatientServiceImpl(PatientRepository patientRepository) {
+    public PatientServiceImpl(PatientRepository patientRepository, BillingServiceGrpcClient billingServiceClient) {
         this.patientRepository = patientRepository;
+        this.billingServiceClient = billingServiceClient;
     }
 
     @Override
@@ -37,6 +40,9 @@ public class PatientServiceImpl implements PatientService {
         Patient patient = PatientMapper.toPatient(patientRequest);
         patient.setRegisteredDate(LocalDate.now());
         patientRepository.save(patient);
+
+        billingServiceClient.createBillingAccount(patient.getId(), patient.getName(), patient.getEmail());
+
         return PatientMapper.toResponseDTO(patient);
     }
 

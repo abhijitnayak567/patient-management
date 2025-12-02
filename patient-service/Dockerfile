@@ -1,4 +1,4 @@
-FROM maven:3-amazoncorretto-25-alpine AS builder
+FROM maven:3-amazoncorretto-25 AS builder
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
